@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wafes of Dheila — Portofolio</title>
+  <meta name="description" content="Portofolio Dheila Yosa Chintaka — mahasiswa Ilmu Komputer, hobi travelling & berenang.">
+  <style>
+    /* ====== Variables warna ====== */
+    :root{
+      --baby-blue: #A7D8FF;
+      --soft-green: #C9F4C7;
+      --baby-pink: #FADADD;
+      --white: #c1eaf1;
+      --muted: #4b5563; /* teks sekunder */
+      --radius: 14px;
+      --glass: rgba(255,255,255,0.6);
+    }
+
+    /* ====== Reset & base ====== */
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#111827;
+      background: linear-gradient(180deg,var(--white) 0%, #08516a 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* ====== Layout ====== */
+    .container{
+      max-width:1000px;
+      margin:0 auto;
+      padding:28px;
+    }
+
+    /* ====== Header / Nav ====== */
+    header.site-header{
+      background: linear-gradient(90deg,var(--baby-blue), var(--soft-green));
+      padding:44px 0 36px;
+      border-bottom:4px solid var(--baby-pink);
+      position:sticky;
+      top:0;
+      z-index:40;
+      backdrop-filter: blur(6px);
+    }
+    .nav-inner{
+      max-width:1000px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 0 18px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .brand .logo{
+      width:56px;height:56px;border-radius:12px;
+      background:linear-gradient(135deg,var(--white), rgba(255,255,255,0.85));
+      display:flex;align-items:center;justify-content:center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      font-weight:700;color:var(--muted);
+    }
+    .brand h1{font-size:18px;margin:0;line-height:1}
+    nav.main-nav a{
+      margin-left:18px;
+      font-size:14px;
+      color:rgba(17,24,39,0.95);
+    }
+    nav.main-nav a:hover{color:var(--baby-blue)}
+
+    /* ====== Hero ====== */
+    .hero{
+      padding:52px 18px;
+      display:flex;
+      align-items:center;
+      gap:28px;
+      flex-wrap:wrap;
+    }
+    .hero-left{
+      flex:1 1 380px;
+    }
+    .hero-right{
+      flex:0 0 220px;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .hero h2{
+      font-size:28px;margin:0 0 8px;
+      color:#0f172a;
+    }
+    .hero p.lead{
+      margin:0 0 18px;color:var(--muted);font-size:15px;
+    }
+    .cta{
+      display:inline-block;
+      padding:10px 16px;border-radius:10px;
+      background:var(--baby-blue);color:#06202a;font-weight:600;
+      box-shadow: 0 6px 18px rgba(102,153,255,0.12);
+    }
+
+    .avatar{
+      width:200px;height:200px;border-radius:20px;
+      overflow:hidden;border:6px solid var(--soft-green);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.09);
+      transform: translateY(0);
+      animation: float 5s ease-in-out infinite;
+      background:#295d74;
+    }
+    @keyframes float{
+      0%{transform:translateY(0px)}
+      50%{transform:translateY(-8px)}
+      100%{transform:translateY(0px)}
+    }
+
+    /* ====== Sections common ====== */
+    section{
+      padding:36px 18px;
+      background:transparent;
+    }
+    h3.section-title{
+      margin:0 0 16px;
+      font-size:18px;
+      color:var(--baby-blue);
+      padding-left:10px;border-left:5px solid var(--baby-pink);
+    }
+    .card{
+      background:var(--white);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow: 0 10px 28px rgba(12,20,30,0.06);
+      transition:transform .28s ease, box-shadow .28s ease;
+    }
+    .card:hover{transform:translateY(-6px); box-shadow: 0 20px 36px rgba(12,20,30,0.08)}
+
+    /* ====== About layout ====== */
+    .about-grid{
+      display:grid;
+      grid-template-columns: 1fr 320px;
+      gap:20px;
+      align-items:center;
+    }
+    .about-text p{color:var(--muted);margin:0 0 12px;font-size:15px}
+    .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .pill{background:var(--soft-green);padding:6px 10px;border-radius:999px;font-weight:600;font-size:13px}
+
+    /* ====== Pendidikan (timeline) ====== */
+    .timeline{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+    .time-item{
+      display:flex;gap:14px;align-items:flex-start;
+    }
+    .time-bullet{
+      min-width:8px;height:8px;background:var(--baby-pink);border-radius:999px;margin-top:6px;
+    }
+    .time-content{background:linear-gradient(180deg,var(--white), #fbfdff);padding:12px;border-radius:12px;flex:1}
+    .time-content strong{display:block;font-size:15px;color:#0f172a}
+    .time-content span{display:block;color:var(--muted);font-size:13px}
+
+    /* ====== Sertifikat gallery ====== */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+      gap:14px;
+    }
+    .gallery-item{
+      border-radius:12px;overflow:hidden;background:var(--glass);padding:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      transition: transform .22s ease, box-shadow .22s ease;
+      cursor:pointer;
+    }
+    .gallery-item:hover{transform:translateY(-8px); box-shadow:0 18px 36px rgba(0,0,0,0.08)}
+    .gallery-item img{border-radius:8px;height:150px;object-fit:cover;width:100%}
+
+    /* ====== Hobi ====== */
+    .hobi-grid{display:flex;gap:16px;flex-wrap:wrap}
+    .hobi-card{flex:1;min-width:220px;background:linear-gradient(135deg,var(--baby-blue),var(--soft-green));color:#06202a;padding:16px;border-radius:12px;text-align:center}
+
+    /* ====== Kontak ====== */
+    .contact-box{text-align:center;padding:18px;border-radius:12px;background:var(--baby-pink);color:#111827}
+    .contact-box a{font-weight:700;color:#111827}
+
+    /* ====== Footer ====== */
+    footer{margin-top:28px;padding:20px 18px;text-align:center;color:var(--muted)}
+
+    /* ====== Responsive ====== */
+    @media (max-width:920px){
+      .about-grid{grid-template-columns:1fr}
+      .hero-right{order:2;margin-top:10px}
+    }
+    @media (max-width:520px){
+      .nav-inner{padding:0 12px}
+      .brand h1{font-size:15px}
+      .hero h2{font-size:22px}
+      .avatar{width:160px;height:160px}
+    }
+
+    /* ====== Scroll reveal ====== */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <!-- Header / Nav -->
+  <header class="site-header" role="banner">
+    <div class="nav-inner">
+      <div class="brand" aria-hidden="true">
+        <div class="logo">DW</div>
+        <div>
+          <h1 style="margin:0;font-size:16px">Waves of Dheila</h1>
+          <div style="font-size:12px;color:var(--muted)">Portofolio • Dheila Yosa Chintaka</div>
+        </div>
+      </div>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#about">Tentang</a>
+        <a href="#pendidikan">Pendidikan</a>
+        <a href="#sertifikat">Sertifikat</a>
+        <a href="#hobi">Hobi</a>
+        <a href="#kontak">Kontak</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-left">
+        <h2 id="hero-title">Halo, saya Dheila Yosa Chintaka 👋</h2>
+        <p class="lead">Mahasiswa baru Ilmu Komputer — Universitas Negeri Medan. Saya sedang belajar dunia teknologi sambil mengeksplor kreativitas lewat desain dan video sederhana.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="cta" href="#about">Tentang Saya</a>
+          <a href="#sertifikat" style="align-self:center;color:var(--muted)">Lihat Sertifikat →</a>
+        </div>
+
+        <div style="margin-top:18px;color:var(--muted);font-size:14px">
+          <strong>Hobi:</strong> Travelling • Berenang
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="avatar card" role="img" aria-label="Foto Dheila (ganti dengan foto sebenarnya)">
+          <img src="fotodheilla-1.jpg" alt="Foto Dheila (ganti dengan foto kamu)" style="width:100%;height:100%;object-fit:cover;border-radius:10px">
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container reveal">
+      <h3 class="section-title">Tentang Saya</h3>
+      <div class="card about-grid">
+        <div class="about-text">
+          <p><strong>Dheila Yosa Chintaka</strong> — mahasiswa baru Ilmu Komputer di Universitas Negeri Medan. Saat ini saya sedang mulai mengenal dunia komputer dan teknologi, serta semangat belajar desain digital dan editing sederhana.</p>
+          <p>Sebelumnya saya bersekolah di <strong>MTsS Arraudlatul Hasanah</strong> dan <strong>SMA Negeri 1 Sinabang</strong>. Di SMA saya aktif di organisasi kepramukaan (menjabat sebagai sekretaris) dan juga menjadi anggota marching band. Pengalaman tersebut mengajarkan saya kerja tim, tanggung jawab, dan kedisiplinan.</p>
+          <div class="pills" aria-hidden="true">
+            <div class="pill">Travelling</div>
+            <div class="pill">Berenang</div>
+            <div class="pill">Organisasi</div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;align-items:center">
+          <div style="width:100%;text-align:center;font-size:14px;color:var(--muted)">Lokasi</div>
+          <div class="card" style="padding:10px;width:100%;text-align:center;background:linear-gradient(180deg,var(--white),#f7fff7)">
+            <strong>Simeulue / Sinabang</strong><br><span style="color:var(--muted);font-size:13px">Asal & Sekolah</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pendidikan -->
+    <section id="pendidikan" class="container reveal">
+      <h3 class="section-title">Riwayat Pendidikan</h3>
+      <div class="card timeline" aria-live="polite">
+        <div class="time-item">
+          <div class="time-bullet" aria-hidden="true"></div>
+          <div class="time-content">
+            <strong>SD Negeri 1 Simeulue Timur</strong>
+            <span>Awal mula membangun semangat belajar dan kedisiplinan.</span>
+          </div>
+        </div>
+
+        <div class="time-item">
+          <div class="time-bullet" aria-hidden="true"></div>
+          <div class="time-content">
+            <strong>MTsS Arraudlatul Hasanah</strong>
+            <span>Mulai aktif di organisasi, belajar kerja sama dan tanggung jawab.</span>
+          </div>
+        </div>
+
+        <div class="time-item">
+          <div class="time-bullet" aria-hidden="true"></div>
+          <div class="time-content">
+            <strong>SMA Negeri 1 Sinabang</strong>
+            <span>Aktif di kepramukaan (sekretaris) dan marching band; belajar kepemimpinan dan manajemen acara.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sertifikat -->
+    <section id="sertifikat" class="container reveal">
+      <h3 class="section-title">Sertifikat & Pengalaman</h3>
+      <p style="color:var(--muted);margin-top:8px;margin-bottom:14px">Beberapa sertifikat yang saya miliki — klik untuk memperbesar.</p>
+
+      <div class="gallery" aria-label="Galeri sertifikat">
+        <div class="gallery-item" data-full="sertifikat Dheila-3.jpg" tabindex="0" role="button" aria-pressed="false">
+          <img src="sertifikat Dheila-3.jpg" alt="Sertifikat Marching Band (klik untuk lihat)">
+          <div style="margin-top:8px;font-weight:600">Marching Band</div>
+        </div>
+
+        <div class="gallery-item" data-full="sertifikat Dheila-2.jpg" tabindex="0" role="button" aria-pressed="false">
+          <img src="sertifikat Dheila-2.jpg" alt="Sertifikat Sekretaris Acara 17 Agustus (klik untuk lihat)">
+          <div style="margin-top:8px;font-weight:600">Sekretaris Acara 17 Agustus</div>
+        </div>
+
+        <div class="gallery-item" data-full="sertifikat Dheila-1.jpg" tabindex="0" role="button" aria-pressed="false">
+          <img src="sertifikat Dheila-1.jpg" alt="Sertifikat Raudhah Computer Court (klik untuk lihat)">
+          <div style="margin-top:8px;font-weight:600">Raudhah Computer Court</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hobi -->
+    <section id="hobi" class="container reveal">
+      <h3 class="section-title">Hobi & Minat</h3>
+      <div class="hobi-grid">
+        <div class="hobi-card card">
+          <h4 style="margin:0 0 8px">Travelling</h4>
+          <p style="margin:0;color:var(--muted)">Menjelajah tempat baru memberi saya inspirasi dan ide-ide segar.</p>
+        </div>
+        <div class="hobi-card card">
+          <h4 style="margin:0 0 8px">Berenang</h4>
+          <p style="margin:0;color:var(--muted)">Berenang membantu saya rileks dan menjaga kebugaran.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="kontak" class="container reveal">
+      <h3 class="section-title">Kontak</h3>
+      <div class="contact-box card">
+        <p style="margin:0 0 8px">Terima kasih telah mengunjungi portofolio saya 🌸</p>
+        <p style="margin:0 6px 8px">📧 <a href="mailto:chintakadheila@gmail.com">chintakadheila@gmail.com</a></p>
+        <p style="margin:0">📷 <a href="https://www.instagram.com/_dhelys_?igsh=d205N3AzMHNkNXg0&utm_source=qr" target="_blank" rel="noopener noreferrer">_dheilys_</a></p>
+      </div>
+    </section>
+
+    <footer class="container">
+      <div style="max-width:900px;margin:0 auto">
+        <small>© 2025 Dheila Yosa Chintaka • Waves of Dheila</small>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Lightbox Modal (dynamic) -->
+  <div id="lightbox" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.6);z-index:80;padding:20px">
+    <button id="lb-close" aria-label="Tutup" style="position:absolute;right:18px;top:18px;background:var(--baby-pink);border:none;padding:8px 10px;border-radius:8px;cursor:pointer">Tutup ✕</button>
+    <img id="lb-img" src="" alt="Gambar Sertifikat" style="max-width:980px;max-height:86vh;border-radius:12px;box-shadow:0 18px 40px rgba(2,6,23,0.6)">
+  </div>
+
+  <script>
+    // ===== Scroll reveal menggunakan IntersectionObserver =====
+    (function(){
+      const reveals = document.querySelectorAll('.reveal');
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {threshold: 0.12});
+      reveals.forEach(r => obs.observe(r));
+    })();
+
+    // ===== Lightbox sederhana untuk sertifikat =====
+    (function(){
+      const gallery = document.querySelectorAll('.gallery-item');
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lb-img');
+      const closeBtn = document.getElementById('lb-close');
+
+      function openLightbox(src, alt){
+        lbImg.src = src;
+        lbImg.alt = alt || 'Sertifikat';
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox(){
+        lb.style.display = 'none';
+        document.body.style.overflow = '';
+        lbImg.src = '';
+      }
+
+      gallery.forEach(item=>{
+        item.addEventListener('click', ()=>{
+          const full = item.dataset.full || item.querySelector('img').src;
+          const alt = item.querySelector('img').alt;
+          openLightbox(full, alt);
+        });
+        // keyboard accessible
+        item.addEventListener('keydown', (e)=>{
+          if(e.key === 'Enter' || e.key === ' '){
+            e.preventDefault();
+            item.click();
+          }
+        });
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLightbox(); });
+      document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeLightbox(); });
+    })();
+
+    // ===== Optional: smooth scroll offset fix for sticky header (if needed) =====
+    // Not strictly necessary but helpful for sharp jumps
+    (function(){
+      const headerHeight = document.querySelector('.site-header').offsetHeight;
+      document.querySelectorAll('a[href^="#"]').forEach(link=>{
+        link.addEventListener('click', (e)=>{
+          const targetId = link.getAttribute('href');
+          if(!targetId.startsWith('#') || targetId === '#') return;
+          const target = document.querySelector(targetId);
+          if(!target) return;
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 12;
+          window.scrollTo({ top, behavior: 'smooth' });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
